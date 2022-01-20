@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.highlighted{
+  color: red;
+}
+
+.userList{
+  display: flex;
+  flex-direction: column;
+}

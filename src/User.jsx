@@ -3,7 +3,6 @@ const someLater = 'e';
 
 const User = ({name}) => {
 
-    // пункт1
     if (name.search(someLater) != -1) 
     return <span> It's Premium user! Welcome {name}... </span>
     else { return <span> It's user {name}</span> }

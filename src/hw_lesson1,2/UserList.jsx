@@ -1,6 +1,5 @@
 import React from "react";
 import User from './User.jsx';
-import ComposableUser from './ComposableUser.jsx';
 
 const data = [{id: "uniq1", name:"Paul"}, 
 {id: "uniq2", name:"Mary"}, 
@@ -11,10 +10,9 @@ const data = [{id: "uniq1", name:"Paul"},
 {id: "uniq7", name:"Anna"},
 {id: "uniq8", name:"Bob"}];
 
-const UserList = ({name}) => {
+const UserList = ({name,id}) => {
     return (<div className="userList">
-    { data.map(item => <User key={item.id} name={item.name}></User>)}
-    <ComposableUser/>
+    { data.map(item => <User key={item.id} name={item.name} id={item.id}></User>)}
     </div>)
 }
 

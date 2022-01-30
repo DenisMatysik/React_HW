@@ -1,16 +1,11 @@
 import MouseFind from './hw_lesson3/MouseFind';
-import LifeStyleComponent from './hw_lesson3/LifeStyleComponent';
-
-
-
-
-
+import LifeComp from './hw_lesson3/LifeComp';
 
   function App3() {
     return (
         <div>
+          {/* <LifeComp/> */}
             <MouseFind/>
-            {/* <LifeStyleComponent/> */}
     </div>
     );
   }

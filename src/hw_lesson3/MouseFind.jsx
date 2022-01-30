@@ -1,4 +1,5 @@
-import React from "react"
+import React from 'react';
+import { useState } from "react/cjs/react.development";
 
 const divInf = {
     height: "100px",
@@ -8,23 +9,18 @@ const divInf = {
     padding: "50px"
 }
 
-function handleMove (event) {
-    document.querySelector('.x').innerHTML = event.clientX;
-    document.querySelector('.y').innerHTML = event.clientY
-}
-
-const MouseFind = () =>{
-    return (
+export default function MouseFind() {
+    const [cordX, setcordX] = useState(0);
+    const [cordY, setcordY] = useState(0);
+    const handleMove = (event)=>{
+        setcordX(event.clientX);
+        setcordY(event.clientY);
+    }
+  return <div style={divInf} onMouseMove={handleMove}>
+        move the mouse:
         <div>
-        <div style={divInf} onMouseMove={handleMove}>
-        move the mouse
-        <div>
-        X: <span className="x"></span>
-        Y: <span className="y"></span>
+        X: {cordX}
+        Y: {cordY}
         </div>   
         </div>
-        </div>
-    )
 }
-
-export default MouseFind

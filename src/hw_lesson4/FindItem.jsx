@@ -13,14 +13,6 @@ const styleItem = {
     padding:"5px"
 }
 
-const btnStyle = {
-    height:"30px",
-    width:"80px",
-    backgroundColor:"black",
-    color:"white",
-    textAlign: "center",
-    padding:"5px"
-}
 
 export default function FindItem() {
     const [cordX, setcordX] = useState(300);

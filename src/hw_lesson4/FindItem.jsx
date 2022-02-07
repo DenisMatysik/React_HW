@@ -23,8 +23,8 @@ const btnStyle = {
 }
 
 export default function FindItem() {
-    const [cordX, setcordX] = useState(300);
-    const [cordY, setcordY] = useState(300);
+    const [cordX, setcordX] = useState(0);
+    const [cordY, setcordY] = useState(0);
 
     const randomPos = ()=>{
         setTimeout(function(){
@@ -34,14 +34,18 @@ export default function FindItem() {
             document.getElementsByClassName("random-item")[0].style.top = cordY + "px";},300)
     }
 
-    const changePosition = ()=>{
-        // document.getElementsByClassName("random-item")[0].removeEventListener("mousemove",randomPos)
-        console.log("click")
-    }
+    // setTimeout работает не корректно
 
   return <div>
-        <div style={styleItem} onMouseMove={randomPos} onClick={changePosition} className='random-item' >
+        <div style={styleItem} onMouseMove={randomPos} className='random-item' >
         X:{cordX}px | Y:{cordY}px
         </div>
         </div>
 }
+
+// // или
+// const [cursorPosition, setCursorPosition] = useState({ top: 0, left: 0 })
+// const onMouseMove = e =>
+// setCursorPosition({ top: Math.random()*1000, left:  Math.random()*1000 });
+
+// <div onMouseMove={onMouseMove}  style={{position: 'absolute', ...cursorPosition }}>X:{cursorPosition.top}px | Y:{cursorPosition.left}px</div>

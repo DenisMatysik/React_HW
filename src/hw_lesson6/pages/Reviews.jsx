@@ -10,7 +10,7 @@ export const users = [
 ]
 
 export default function Reviews() {
-  return <div> Reviews page,click on review, whick you want to check
+  return <div> Reviews page,click on review, which you want to check
     <h1>All reviews:</h1>
     { users.map(item => <Link key={item.id} fullName={item.fullName} id={item.id} review={item.review} to={`/reviews/${item.id}`}>
         <h3> Reviews №{item.id} from {item.fullName}

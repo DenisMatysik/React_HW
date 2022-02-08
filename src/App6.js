@@ -71,9 +71,8 @@ function App6(){
                 <Route path="/reviews" element={<div>
                     <SideMenu></SideMenu>
                     <Reviews></Reviews>
-                </div>}>
-                    <Route path=":userId" element={<Review></Review>}></Route>
-                </Route>
+                </div>}></Route>
+                <Route path="/reviews/:userId" element={<Review></Review>}></Route>
                 <Route path="*" element={<div>Eror 404: page not found</div>}></Route>
          </Routes>
          </BrowserRouter>

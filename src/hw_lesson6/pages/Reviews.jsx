@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import Review from './Review';
 
 const users = [
@@ -8,13 +9,13 @@ const users = [
     {id:"4", fullName:"BNM 2123", review:"ghjkhjk asdas da sd hjkhjk dasdas as das d"},
 ]
 
-export default function Reviews() {
+export default function Reviews({users}) {
   return <div> Reviews page,click on review, whick you want to check
     <h1>All reviews:</h1>
-    { users.map(item => <div key={item.id} fullName={item.fullName} id={item.id} review={item.review}>
+    { users.map(item => <Link key={item.id} fullName={item.fullName} id={item.id} review={item.review} to={`/reviews/${item.id}`}>
         <h3> Reviews №{item.id} from {item.fullName}
         </h3>
-    </div>)}
+    </Link>)}
 
   </div>;
 }

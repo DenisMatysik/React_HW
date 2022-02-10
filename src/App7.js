@@ -30,7 +30,7 @@ const hotel2 = {id:"2",name:"hotel2",roomsCount:200, address:"Kiev"};
 const hotel3 = {id:"3",name:"hotel3",roomsCount:300, address:"Moscov"};
 const hotel4 = {id:"4",name:"hotel4",roomsCount:700, address:"Egypt"};
 const hotel5 = {id:"5",name:"hotel5",roomsCount:500, address:"Montenegro"};
-
+// some changes
 
 let store = createStore(reducerHotel);
 console.log("Store",store.getState());

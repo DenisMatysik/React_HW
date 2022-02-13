@@ -10,6 +10,7 @@ import App_useState from './App_useState';
 import App_useEffect from './App_useEffect';
 import App_useRef from './App_useRef';
 import App7 from './App7.js';
+import App8 from './App8.js';
 
 
 
@@ -23,6 +24,7 @@ ReactDOM.render(
   // <App4 />,
   // <App5 />,
   // <App6 />,
-  <App7 />,
+  // <App7 />,
+  <App8 />,
   document.getElementById('root')
 );

@@ -1,29 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Provider, useDispatch } from 'react-redux';
-import { Reducer, createStore } from 'redux';
+import {  createStore } from 'redux';
 import reducerGoals from './reducer';
 
 export default function ReduxTest() { 
-    const [countGoals, setCountGolas] = useState(0);
-    let store = createStore(reducerGoals);  
-    const Todos = ()=>{
-      const todos = useSelector(state=> state.todos);
-      const dispatch = useDispatch();
-      const deleteGoal =(id)=>dispatch({
-          type: "REMOVE",
-          payload: id
-        });
-
-    
-      
-      return <ul>
-        {todos.map(todo => <li>{todo.goal}
-        <button onClick={()=> deleteGoal(todo.id)} >Delete</button>
-        </li>)}
-      </ul>
-    }
-
+    let store = createStore(reducerGoals); 
     const TodoInput = ()=>{
       const dispatch = useDispatch();
       const [inputInf, setInputInf] = useState("");
@@ -38,6 +20,7 @@ export default function ReduxTest() {
             id: Math.ceil(Math.random()*100),
           }
         });
+        setInputInf("");
       }
       return ( <div>
           <input onChange={inputChange} placeholder='Add your new todo' type="text" value={inputInf}/>
@@ -45,15 +28,33 @@ export default function ReduxTest() {
       </div>
       )
     }
+    const Todos = ()=>{
+      const goals = useSelector(state=> state.goals); 
+      const dispatch = useDispatch();
+      const deleteGoal =(id)=>{dispatch({type:"REMOVE", payload:id});
+      }
+      const deleteAllGoals = ()=>{dispatch({type:"REMOVE_ALL", payload:null})
+      }
+      return <div>
+        <ul>
+        {goals.map(goal => <li key={goal.id} >{goal.goal} 
+        <button onClick={()=>deleteGoal(goal.id)}>Delete</button>
+        </li>)}
+      </ul>
+      <div>You have {goals.length} pending tasks
+        <button onClick={deleteAllGoals}>Clear All</button>
+      </div>
+        </div>
+    }
 
-  return (
+  return ( <div>
     <Provider store={store}>
       <h1>Todo App</h1>
       <TodoInput/>
-      <Todos/>
-      <div>You have {countGoals} pending tasks
-        <button>Clear All</button>
-      </div>
+      <Todos></Todos>
     </Provider>
+    
+  </div>
+    
   )
 }

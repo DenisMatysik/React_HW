@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from "./Modal.css"
+import "./Modal.css"
 import {MdOutlineClose} from "react-icons/md"
 import Button from '../button/Button'
 import { useDispatch } from 'react-redux';
@@ -31,7 +31,7 @@ export default function Modal({modalOpen, setModalOpen}) {
   return (
       modalOpen && (
           <div className="wrapper">
-          <div className='container'>
+          <div className='containerMod'>
           <div className='closeButton'
             onClick={()=>setModalOpen(false)}
             onKeyDown={()=>setModalOpen(false)}

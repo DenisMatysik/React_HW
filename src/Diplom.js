@@ -1,7 +1,27 @@
 import React from 'react'
+import "./diplom/MainStyle.css"
+import Title from './diplom/components/title/Title'
+import Header from './diplom/components/header/Header'
+import Content from './diplom/components/content/Content'
+import { Provider } from 'react-redux'
+import { store } from './diplom/components/redux/store'
+import { Toaster } from 'react-hot-toast'
+
 
 export default function Diplom() {
   return (
-    <div>Todo List</div>
+    <Provider store={store}>
+      <div className="container">
+      <Title>Todo List</Title>
+      <Header>
+      </Header>
+      <Content></Content>
+      <Toaster
+        position="bottom-left"
+        reverseOrder={false}/>
+    </div>
+
+    </Provider>
+    
   )
 }

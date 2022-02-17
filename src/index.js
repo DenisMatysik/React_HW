@@ -26,7 +26,7 @@ ReactDOM.render(
   // <App5 />,
   // <App6 />,
   // <App7 />,
-  <App8 />,
-  // <Diplom />,
+  // <App8 />,
+  <Diplom />,
   document.getElementById('root')
 );

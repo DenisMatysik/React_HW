@@ -7,27 +7,32 @@ import { addTodo } from '../redux/todoSlice';
 import { toast } from 'react-hot-toast';
 
 
-export default function Modal({modalOpen, setModalOpen}) {
+export default function Modal({type, modalOpen, setModalOpen}) {
     const [title, setTitle] = useState("");
     const [status, setStatus] = useState ("incomplete")
     const dispatch = useDispatch();
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        if(title && status){
-        dispatch(addTodo({
-            id: Date.now(),
-            title,
-            status,
-            time: new Date().toLocaleString()
-        }))
-        toast.success("Task added");
-        setModalOpen(false);
-        }
-        else {
+        if (title === ""){
             toast.error("Title shouldn't be empty");
         }
-    }
+        if(title && status){
+            if(type === "add"){
+                dispatch(addTodo({
+                    id: Date.now(),
+                    title,
+                    status,
+                    time: new Date().toLocaleString()
+                }))
+                toast.success("Task added");
+                setModalOpen(false);
+            }
+        }
+        if (type === "update"){
+            console.log("updating")
+        }
+        }
   return (
       modalOpen && (
           <div className="wrapper">
@@ -41,7 +46,7 @@ export default function Modal({modalOpen, setModalOpen}) {
               <MdOutlineClose/>
           </div>
           <form className='form' onSubmit={(e)=> handleSubmit(e)}>
-              <h1 className='formtTitle'>Add task</h1>
+              <h1 className='formtTitle'>{type === "update" ? "Update" : "Add"} task</h1>
               <label htmlFor='title'>Title
                   <input 
                   type="text" 

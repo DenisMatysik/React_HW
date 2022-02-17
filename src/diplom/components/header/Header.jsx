@@ -15,7 +15,7 @@ export default function Header() {
         <Button typeButton="button" variant='button--all'>Incomplelte task</Button>
         </div>
         <SelectButton/>
-        <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+        <Modal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen}/>
     </div>
   )
 }

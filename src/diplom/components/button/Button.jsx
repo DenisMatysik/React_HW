@@ -11,13 +11,3 @@ export default function Button({children,typeButton, variant, ...rest}) {
     </button>
   )
 }
-
-export const SelectButton =()=>{
-    return (
-        <select className="button--secondary">
-            <option value="all">All</option>
-            <option value="incomplete">Incomplete</option>
-            <option value="complete">Complete</option>
-        </select>
-    )
-}

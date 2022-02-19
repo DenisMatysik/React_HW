@@ -1,21 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Modal.css"
 import {MdOutlineClose} from "react-icons/md"
 import Button from '../button/Button'
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/todoSlice';
+import { addTodo, updateTodo } from '../redux/todoSlice';
 import { toast } from 'react-hot-toast';
 
 
-export default function Modal({type, modalOpen, setModalOpen}) {
+export default function Modal({type, modalOpen, setModalOpen, todo}) {
     const [title, setTitle] = useState("");
     const [status, setStatus] = useState ("incomplete")
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+        if (type === "update"){
+            setTitle(todo.title);
+            setStatus(todo.status);
+        } else {
+            setTitle("");
+            setStatus("incomplete")
+        }
+    }, [type, todo, modalOpen])
 
     const handleSubmit = (e)=>{
         e.preventDefault();
         if (title === ""){
             toast.error("Title shouldn't be empty");
+            return;
         }
         if(title && status){
             if(type === "add"){
@@ -26,12 +37,22 @@ export default function Modal({type, modalOpen, setModalOpen}) {
                     time: new Date().toLocaleString()
                 }))
                 toast.success("Task added");
-                setModalOpen(false);
+                // setModalOpen(false);
             }
         }
         if (type === "update"){
-            console.log("updating")
+            console.log(todo)
+            // if( todo.title !== title || todo.status !== status){
+                dispatch(updateTodo({
+                    ...todo,
+                    title,
+                    status,
+                }))
+            // } else {
+            //     toast.error("no change todo")
+            // }
         }
+        setModalOpen(false);
         }
   return (
       modalOpen && (
@@ -64,7 +85,7 @@ export default function Modal({type, modalOpen, setModalOpen}) {
               <div className='buttonContainer'>
                   <Button 
                   typeButton="submit"
-                  variant='button--primary'>Add task</Button>
+                  variant='button--primary'>{type === "update" ? "Update" : "Add"} task</Button>
                   <Button
                   onClick={()=>setModalOpen(false)}
                   onKeyDown={()=>setModalOpen(false)}

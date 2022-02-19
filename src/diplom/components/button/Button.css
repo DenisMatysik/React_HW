@@ -11,9 +11,15 @@
 	cursor: pointer;
 	overflow: hidden;
 }
+
 .button--primary {
-	background-color: var(--primaryPurple);
-	color: var(--white);
+	background-color: white;
+	color: black;
+}
+.button--primary:hover{
+	background-color: black;
+	color: white;
+
 }
 .button--secondary {
 	background-color: var(--bg-3);
@@ -23,4 +29,9 @@
 .button--all{
 	background-color: black;
 	color: white;
+}
+
+.button--all:hover{
+	background-color: white;
+	color: black;
 }

@@ -1,12 +1,22 @@
-import {React,useState} from 'react'
+import {React,useEffect,useState} from 'react'
 import { MdDelete, MdEdit, MdDone } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 import "./TodoItem.css"
-import { deleteTodo } from '../redux/todoSlice'
+import { deleteTodo, updateTodo } from '../redux/todoSlice'
 import Modal from '../modal/Modal'
 
 export default function TodoItem({todo}) {
-const [updateModalOpen, setUpdateModalOpen] = useState(false)
+const [updateModalOpen, setUpdateModalOpen] = useState(false);
+const [doneTodo, setDoneTodo]= useState(false);
+
+useEffect(()=>{
+    if (todo.status === "complete"){
+        setDoneTodo(true);
+    } else {
+        setDoneTodo(false)
+    }
+}, [todo.status]);
+
 const dispatch = useDispatch();
 const deleteTask =()=>{
     dispatch(deleteTodo(todo.id));
@@ -14,12 +24,19 @@ const deleteTask =()=>{
 const editTodo =()=>{
     setUpdateModalOpen(true);
 }
+const doneTask=()=>{
+    setDoneTodo(!doneTodo);
+    dispatch(updateTodo({
+        ...todo,
+        status: doneTodo ? "incomplete" : "complete"
+    }));
+}
   return (
       <>
     <div className='item'>
         <div className='todoDetails'>
         <div className='icon'
-            // onClick={doneTodo}
+            onClick={doneTask}
             role="button"
             tabIndex={0}>
                 <MdDone/>

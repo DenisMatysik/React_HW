@@ -37,22 +37,22 @@ export default function Modal({type, modalOpen, setModalOpen, todo}) {
                     time: new Date().toLocaleString()
                 }))
                 toast.success("Task added");
-                // setModalOpen(false);
+                setModalOpen(false);
             }
         }
         if (type === "update"){
             console.log(todo)
-            // if( todo.title !== title || todo.status !== status){
+            if( todo.title !== title || todo.status !== status){
                 dispatch(updateTodo({
                     ...todo,
                     title,
                     status,
-                }))
-            // } else {
-            //     toast.error("no change todo")
-            // }
+                }));
+                setModalOpen(false);
+            } else {
+                toast.error("No change todo")
+            }
         }
-        setModalOpen(false);
         }
   return (
       modalOpen && (

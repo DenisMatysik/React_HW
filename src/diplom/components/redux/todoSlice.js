@@ -46,7 +46,7 @@ const todoSlice = createSlice({
             const todoListArr = JSON.parse(todoList);  
             todoListArr.forEach((todo) => {
                 if (todo.id === action.payload.id){
-                    todo.tittle = action.payload.tittle;
+                    todo.title = action.payload.title;
                     todo.status = action.payload.status;
                 }
             }); 

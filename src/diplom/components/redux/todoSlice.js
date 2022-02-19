@@ -9,7 +9,8 @@ const getInitialTodos=()=>{
 }
 
 const initialState = {
-    todoList: getInitialTodos()
+    filterStatus:"all",
+    todoList: getInitialTodos(),
 }
 
 const todoSlice = createSlice({
@@ -53,10 +54,13 @@ const todoSlice = createSlice({
             window.localStorage.setItem("todoList", JSON.stringify(todoListArr));
             state.todoList = todoListArr; 
         } 
+      },
+      uptadeFilterStatus:(state, action)=>{
+          state.filterStatus = action.payload;
       }
   }
 });
 
-export const {addTodo, deleteTodo, updateTodo, doneTodo} = todoSlice.actions
+export const {addTodo, deleteTodo, updateTodo, doneTodo, uptadeFilterStatus} = todoSlice.actions
 
 export default todoSlice.reducer

@@ -33,7 +33,7 @@ const doneTask=()=>{
 }
   return (
       <>
-    <div className='item'>
+    <div className={"item"+" "+todo.status+"d"}>
         <div className='todoDetails'>
         <div className='icon'
             onClick={doneTask}

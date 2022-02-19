@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import TodoItem from '../todoItem/TodoItem';
+import "./Content.css"
 
 export default function Content() {
   const todoList = useSelector(state=> state.todo.todoList);
@@ -16,6 +17,6 @@ export default function Content() {
   })
 
   return (
-    <div>{filteredTodoList && filteredTodoList.length>0 ? (filteredTodoList.map((todo)=> <TodoItem key={todo.id} todo={todo}/>)) : "no todo"}</div>
+    <div>{filteredTodoList && filteredTodoList.length>0 ? (filteredTodoList.map((todo)=> <TodoItem key={todo.id} todo={todo}/>)) : <div className='emptyTodoList'>No {filterStatus} todo</div>}</div>
   )
 }

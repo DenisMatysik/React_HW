@@ -11,7 +11,6 @@ import App_useEffect from './App_useEffect';
 import App_useRef from './App_useRef';
 import App7 from './App7.js';
 import App8 from './App8.js';
-import Diplom from './Diplom';
 
 
 
@@ -26,7 +25,6 @@ ReactDOM.render(
   // <App5 />,
   // <App6 />,
   // <App7 />,
-  // <App8 />,
-  <Diplom />,
+  <App8 />,
   document.getElementById('root')
 );
